@@ -22,19 +22,19 @@ npm run lint
 npm run build-min
 npm run build-dev
 
-# # run unit tests
-# tap --reporter dot --coverage --no-coverage-report test/js test/build/webpack.test.js
-#
-# # run render tests
-# istanbul cover --dir .nyc_output --include-pid --report none --print none test/render.test.js &&
-# istanbul cover --dir .nyc_output --include-pid --report none --print none test/query.test.js#
-#
-# # send coverage report to coveralls
-# nyc report --reporter=lcov
-# (node ./node_modules/coveralls/bin/coveralls.js < ./coverage/lcov.info) || true
+# run unit tests
+tap --reporter dot --coverage --no-coverage-report test/js test/build/webpack.test.js
+
+# run render tests
+istanbul cover --dir .nyc_output --include-pid --report none --print none test/render.test.js &&
+istanbul cover --dir .nyc_output --include-pid --report none --print none test/query.test.js#
+
+# send coverage report to coveralls
+nyc report --reporter=lcov
+(node ./node_modules/coveralls/bin/coveralls.js < ./coverage/lcov.info) || true
 
 # upload benchmark
-if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "benchmark-master" ]; then
+if [ "$CIRCLE_BRANCH" == "master" ]; then
     npm run build-benchmarks
     aws s3 cp --acl public-read --content-type application/javascript bench/benchmarks_generated.js s3://mapbox-gl-js/master/benchmarks.js
 fi
