@@ -32,7 +32,7 @@
     "quickselect": "^1.0.0",
     "request": "^2.39.0",
     "shelf-pack": "^1.0.0",
-    "supercluster": "^2.0.1",
+    "supercluster": "georgeke/supercluster.git#ac3492737e7ce98e07af679623aad452373bbc40",
     "tinyqueue": "^1.1.0",
     "unassertify": "^2.0.0",
     "unflowify": "^1.0.0",
