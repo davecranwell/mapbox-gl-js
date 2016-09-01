@@ -53,7 +53,6 @@ const EXTENT = require('../data/extent');
  * @see [Create a heatmap from points](https://www.mapbox.com/mapbox-gl-js/example/heatmap/)
  */
 class GeoJSONSource extends Evented {
-
     constructor(id, options, dispatcher, eventedParent) {
         super();
         options = options || {};
@@ -95,7 +94,8 @@ class GeoJSONSource extends Evented {
                 maxZoom: Math.min(options.clusterMaxZoom, this.maxzoom - 1) || (this.maxzoom - 1),
                 extent: EXTENT,
                 radius: (options.clusterRadius || 50) * scale,
-                log: false
+                log: false,
+                metricKey: options.clusterMetric || null
             }
         }, options.workerOptions);
 
